@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getTopRoutes } from '../../services/api'
 import { getToken, getUser } from '../../utils/helpers'
-import './TravelerCards.css'
 
 const FALLBACK = []
 
