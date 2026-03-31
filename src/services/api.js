@@ -1,7 +1,7 @@
 // src/services/api.js
 import { getToken } from '../utils/helpers'   
 
-const BASE_URL = 'http://localhost:8000/api'
+const BASE_URL = import.meta.env.VITE_API_URL
 
 function getHeaders() {
   const token = getToken()                    
@@ -36,7 +36,7 @@ export function registerUser(formData) {
     fd.append('government_id',  formData.governmentIdNumber)
   if (formData.uploadIdDocument)
     fd.append('id_document',    formData.uploadIdDocument)
-  return fetch('http://localhost:8000/api/register/', {
+  return fetch(`${BASE_URL}/register/`, {
     method: 'POST',
     body: fd,
   })
@@ -132,7 +132,7 @@ export async function postTravelPlan(formData) {
   if (formData.notes)
     fd.append('notes', formData.notes)
 
-  const res = await fetch('http://localhost:8000/api/travel/', {
+  const res = await fetch('${BASE_URL}/travel/', {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}` },
     body: fd,
